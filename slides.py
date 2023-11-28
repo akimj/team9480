@@ -29,7 +29,6 @@ def upload_file():
             return 'File uploaded successfully!'
     return 'No file uploaded'
 def clear_uploaded_files():
-    # Clear uploaded files in the uploads folder
     folder = app.config['UPLOAD_FOLDER']
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
