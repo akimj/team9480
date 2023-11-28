@@ -3,6 +3,9 @@ from flask_bootstrap import Bootstrap5
 import random
 from PIL import Image
 
+slidephoto = []
+slidetext = []
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'csumb-otter'
 
