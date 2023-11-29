@@ -16,7 +16,7 @@ def addText(index):
 
         width, height = img.size
         captionx = width/6
-        captiony = height - (height/6)
+        captiony = height - (height/8)
 
         draw = ImageDraw.Draw(img)
 
