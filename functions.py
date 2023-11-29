@@ -11,7 +11,7 @@ def addText(index):
 
     # if color is => 100:
     draw.text((0, 0), slidetext[index] ,(255,255,255),font=font)
-    img.save(f 'slide' + index + '.jpg')
+    img.save(f"slide{index}.jpg")
 
     return none
 
