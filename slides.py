@@ -3,6 +3,10 @@ from flask import Flask, render_template, url_for, request
 from flask_bootstrap import Bootstrap5
 import random
 from PIL import Image
+from functions import addText
+
+slidephoto = []
+slidetext = []
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
