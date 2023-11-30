@@ -9,6 +9,7 @@ slidephoto = []
 slidetext = []
 
 app = Flask(__name__)
+UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 app.config['SECRET_KEY'] = 'csumb-otter'
