@@ -17,7 +17,7 @@ bootstrap = Bootstrap5(app)
 @app.route('/')
 def index(): 
     clear_uploaded_files()
-
+    slidephoto.clear
     return render_template('index.html')
 @app.route('/slideshow')
 def slideshow():
@@ -28,7 +28,9 @@ def upload_file():
     if request.method == 'POST':
         uploaded_file = request.files['fileToUpload']
         if uploaded_file:
-            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))  # Save the uploaded file in the current directory
+            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
+            slidephoto.append(uploaded_file.filename)
+            print(uploaded_file.filename)
             return 'File uploaded successfully!'
     return 'No file uploaded'
 def clear_uploaded_files():
