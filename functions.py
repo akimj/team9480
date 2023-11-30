@@ -1,7 +1,6 @@
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
-
 def addText(index):
 
     img = Image.open(f'static/images/{slidephoto[index]}')

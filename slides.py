@@ -19,6 +19,8 @@ bootstrap = Bootstrap5(app)
 def index(): 
     clear_uploaded_files()
     slidephoto.clear
+    print("Vanilla Images:") #console test
+    print(slidephoto) #console test
     return render_template('index.html')
 @app.route('/slideshow')
 def slideshow():
@@ -31,7 +33,8 @@ def upload_file():
         if uploaded_file:
             uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
             slidephoto.append(uploaded_file.filename)
-            print(slidephoto)
+            print("Vanilla Images:") #console test
+            print(slidephoto) #console test
             return 'File uploaded successfully!'
     return 'No file uploaded'
 def clear_uploaded_files():
