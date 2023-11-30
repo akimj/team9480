@@ -31,7 +31,7 @@ def upload_file():
         if uploaded_file:
             uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
             slidephoto.append(uploaded_file.filename)
-            print(uploaded_file.filename)
+            print(slidephoto)
             return 'File uploaded successfully!'
     return 'No file uploaded'
 def clear_uploaded_files():
