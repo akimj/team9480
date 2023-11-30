@@ -22,7 +22,7 @@ def addText(index):
 
     #need to figure out: make text bigger/scalable 
 
-    img.save(f'slide{index}.png')
+    img.save(f'static/slides/slide{index}.png')
 
     return f'slide{index}.png'
 
