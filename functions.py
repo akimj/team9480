@@ -1,6 +1,7 @@
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
+
 def addText(index):
 
     img = Image.open(f'static/images/{slidephoto[index]}')
@@ -9,18 +10,28 @@ def addText(index):
     average = sum(lumi) / len(lumi)
 
     width, height = img.size
-    captionx = width/6
-    captiony = height - (height/8)
+    captionx = width/10
+    captiony = height - (height/6)
+
+    fontsize = width / len(slidetext[index])
+    
+    if fontsize > 150:
+        fontsize = 150
+    else:
+        fontsize = fontsize
+
+    fontname = 'Arial Rounded Bold'  #replaceable for themes 
+    photofont = ImageFont.truetype(f'fonts/{fontname}.ttf', fontsize)
 
     draw = ImageDraw.Draw(img)
 
     if average >= 200:
-        draw.text((captionx, captiony), f'{slidetext[index]}' ,(0,0,0))
+        draw.text((captionx, captiony), f'{slidetext[index]}',
+        font=photofont, fill=(0,0,0))
     else:
-        draw.text((captionx, captiony), f'{slidetext[index]}' ,(255,255,255))
-
-    #need to figure out: make text bigger/scalable 
-
+        draw.text((captionx, captiony), f'{slidetext[index]}', 
+        font=photofont, fill=(255,255,255))
+    
     img.save(f'static/slides/slide{index}.png')
 
     return f'slide{index}.png'
