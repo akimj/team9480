@@ -38,17 +38,17 @@ def upload_file():
     
     
     
-    print("Vanilla Images:")  # Console test
-    print(slidephoto)  # Console test
-    if request.method == 'POST':
-        uploaded_file = request.files['fileToUpload']
-        if uploaded_file:
-            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
-            slidephoto.append(uploaded_file.filename)
-            print("Vanilla Images:")  # Console test
-            print(slidephoto)  # Console test
-            return render_template('index.html')
-    return render_template('index.html', slidephoto=slidephoto)
+    # print("Vanilla Images:")  # Console test
+    # print(slidephoto)  # Console test
+    # if request.method == 'POST':
+    #     uploaded_file = request.files['fileToUpload']
+    #     if uploaded_file:
+    #         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
+    #         slidephoto.append(uploaded_file.filename)
+    #         print("Vanilla Images:")  # Console test
+    #         print(slidephoto)  # Console test
+    #         return render_template('index.html')
+    # return render_template('index.html', slidephoto=slidephoto)
 @app.route('/clear_images', methods=['POST'])
 def clear_images():
     slidephoto.clear()
