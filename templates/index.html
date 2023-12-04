@@ -1,20 +1,75 @@
-{{ bootstrap.load_css() }}
-{{ bootstrap.load_js() }}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {{ bootstrap.load_css() }}
+    {{ bootstrap.load_js() }}
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border: 5px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+        }
+        .content {
+            display: flex;
+            align-items: flex-start;
+        }
+        .image-list {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-right: 20px;
+        }
+        .image-list img {
+            margin-bottom: 10px;
+            max-width: 200px;
+        }
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1, form, a {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Create Your Slideshow!</h1>
-    <img src="static/starter_image/vidthumb.png" alt="">
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="fileToUpload" id="fileToUpload">
-        <input type="submit" value="Upload File" name="submit">
-      </form>
-      <a href="{{url_for('slideshow')}}"> <button>Finished</button> </a>
+    <div class="content">
+        <div class="image-list">
+            {% for filename in slidephoto %}
+                <img src="{{ url_for('static', filename='images/' + filename) }}" alt="{{ filename }}">
+            {% endfor %}
+        </div>
+        
+        <div class="main-content">
+            <h1>Create Your Slideshow!</h1>
+            <img src="/static/starter_image/starter (1).jpg" alt="{{ filename }}">
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <input type="file" name="fileToUpload" id="fileToUpload">
+                <input type="submit" value="Submit Image" name="submit">
+            </form>
+            
+            <a href="{{ url_for('slideshow') }}"><button>Check Slideshow</button></a>
+            
+            <form action="/clear_images" method="post">
+                <input type="submit" value="Clear Images">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
+
+
+
+

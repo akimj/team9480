@@ -1,16 +1,47 @@
-{{ bootstrap.load_css() }}
-{{ bootstrap.load_js() }}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    {{ bootstrap.load_css() }}
+    {{ bootstrap.load_js() }}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .image-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .image-column img {
+            margin-bottom: 10px;
+            max-width: 200px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Slide Show:</h1>
+    <h1>Slide Show</h1>
 
-    <a href="{{url_for('index')}}"> next </a>
-    <img src="https://th.bing.com/th/id/OIP.qF0u9aHRSXtEM3Wzrsj9hQHaKL?rs=1&pid=ImgDetMain" alt="">
+  <a href="{{url_for('index')}}"><button>Back to slide creation</button></a>
+
+    <div class="image-column">
+        {% for i in slidephoto %}
+            <img src="/static/images/{{ i }}" width="250" class="img-fluid rounded" alt="{{ i }}">
+        {% endfor %}
+    </div>
+    <form action="/clear_images" method="post">
+        <input type="submit" value="Clear Images">
+    </form>
 </body>
 </html>
