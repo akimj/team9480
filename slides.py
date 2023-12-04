@@ -21,7 +21,7 @@ def index():
 def slideshow():
     print("Vanilla Images:")  # Console test
     print(slidephoto)  # Console test
-    return render_template('slideshow.html')
+    return render_template('slideshow.html', slidephoto=slidephoto)
 
     
 @app.route('/upload', methods=['POST'])

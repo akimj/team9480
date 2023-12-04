@@ -36,10 +36,10 @@
   <a href="{{url_for('index')}}"><button>Back to slide creation</button></a>
 
     <div class="image-column">
-        {% for i in slidephoto %}
-            <img src="/static/images/{{ i }}" width="250" class="img-fluid rounded" alt="{{ i }}">
-        {% endfor %}
-    </div>
+            {% for filename in slidephoto %}
+                <img src="{{ url_for('static', filename='images/' + filename) }}" alt="{{ filename }}">
+            {% endfor %}
+        </div>
     <form action="/clear_images" method="post">
         <input type="submit" value="Clear Images">
     </form>
