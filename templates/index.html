@@ -51,11 +51,19 @@
                 <img src="{{ url_for('static', filename='images/' + filename) }}" alt="{{ filename }}">
             {% endfor %}
         </div>
+        <div class="image-list">
+            {% for modified_image in modified_images %}
+                <img src="{{ url_for('static', filename='slides/' + modified_image) }}" alt="{{ modified_image }}">
+            {% endfor %}
+        </div>
         
         <div class="main-content">
             <h1>Create Your Slideshow!</h1>
             <img src="/static/starter_image/starter (1).jpg" alt="{{ filename }}">
+         
             <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="lname">Enter Text:</label>
+                <input type="text" id="lname" name="lname"><br><br>
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" value="Submit Image" name="submit">
             </form>

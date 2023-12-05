@@ -1,7 +1,6 @@
 import os
 from flask import Flask, render_template, request, redirect,url_for
 from flask_bootstrap import Bootstrap5
-
 slidephoto = []
 slidetext = []
 
@@ -14,13 +13,15 @@ bootstrap = Bootstrap5(app)
 @app.route('/')
 def index(): 
     print("Vanilla Images:")  # Console test
-    print(slidephoto)  # Console test
+    print(slidephoto) 
+    print(slidetext)  # Console test
     return render_template('index.html', slidephoto=slidephoto)
 
 @app.route('/slideshow')
 def slideshow():
     print("Vanilla Images:")  # Console test
-    print(slidephoto)  # Console test
+    print(slidephoto) 
+    print(slidetext)   # Console test
     return render_template('slideshow.html', slidephoto=slidephoto)
 
     
@@ -29,26 +30,15 @@ def upload_file():
     if request.method == 'POST':
         uploaded_file = request.files['fileToUpload']
         if uploaded_file:
-            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
-            slidephoto.append(uploaded_file.filename)
-            print("Vanilla Images:")  # Console test
-            print(slidephoto)  # Console test
-            return redirect(url_for('index'))  # Redirect to the main page after uploading
+            filename = uploaded_file.filename
+            uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            slidephoto.append(filename)  
+            text = request.form.get('lname')
+            slidetext.append(text) 
+            print(slidephoto) 
+            print(slidetext)
+            return redirect(url_for('index'))  
     return redirect(url_for('index'))
-    
-    
-    
-    # print("Vanilla Images:")  # Console test
-    # print(slidephoto)  # Console test
-    # if request.method == 'POST':
-    #     uploaded_file = request.files['fileToUpload']
-    #     if uploaded_file:
-    #         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
-    #         slidephoto.append(uploaded_file.filename)
-    #         print("Vanilla Images:")  # Console test
-    #         print(slidephoto)  # Console test
-    #         return render_template('index.html')
-    # return render_template('index.html', slidephoto=slidephoto)
 @app.route('/clear_images', methods=['POST'])
 def clear_images():
     slidephoto.clear()
@@ -61,3 +51,4 @@ def clear_images():
         except Exception as e:
             print(f"Error deleting {file_path}: {e}")
     return render_template('index.html', slidephoto=slidephoto)
+
