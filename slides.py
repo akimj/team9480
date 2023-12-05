@@ -14,14 +14,14 @@ bootstrap = Bootstrap5(app)
 
 @app.route('/')
 def index(): 
-    print("Vanilla Images:")  # Console test
-    print(slidephoto)  # Console test
+    print("Vanilla Images:")  
+    print(slidephoto) 
     return render_template('index.html', slidephoto=slidephoto)
 
 @app.route('/slideshow')
 def slideshow():
-    print("Vanilla Images:")  # Console test
-    print(slidephoto)  # Console test
+    print("Vanilla Images:")  
+    print(slidephoto)  
     return render_template('slideshow.html', slidephoto=slidephoto)
 
     
@@ -32,22 +32,22 @@ def upload_file():
         if uploaded_file:
             uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
             slidephoto.append(uploaded_file.filename)
-            print("Vanilla Images:")  # Console test
-            print(slidephoto)  # Console test
+            print("Vanilla Images:")  
+            print(slidephoto)  
             return redirect(url_for('index'))  # Redirect to the main page after uploading
     return redirect(url_for('index'))
     
     
     
-    # print("Vanilla Images:")  # Console test
-    # print(slidephoto)  # Console test
+    # print("Vanilla Images:")  
+    # print(slidephoto)  
     # if request.method == 'POST':
     #     uploaded_file = request.files['fileToUpload']
     #     if uploaded_file:
     #         uploaded_file.save(os.path.join(app.config['UPLOAD_FOLDER'], uploaded_file.filename))
     #         slidephoto.append(uploaded_file.filename)
-    #         print("Vanilla Images:")  # Console test
-    #         print(slidephoto)  # Console test
+    #         print("Vanilla Images:")  
+    #         print(slidephoto)  
     #         return render_template('index.html')
     # return render_template('index.html', slidephoto=slidephoto)
 @app.route('/clear_images', methods=['POST'])
