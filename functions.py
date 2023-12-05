@@ -13,7 +13,7 @@ def addText(index):
     captionx = width/10
     captiony = height - (height/6)
 
-    fontsize = width*2 / len(slidetext[index])
+    fontsize = width*1.5 / len(slidetext[index])
     
     if fontsize > 150:
         fontsize = 150
