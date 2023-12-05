@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SlideMaker</title>
+  <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@800&display=swap" rel="stylesheet">
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header img {
+            width: 200px; 
+            height: auto; 
+            cursor: pointer; 
+        }
+
+        main {
+            padding: 2em;
+            position: relative; 
+        }
+
+        section {
+            text-align: center;
+        }
+
+        section h2 {
+            text-align: center; 
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            height: 300px;
+        }
+
+          .arrow {
+          position: absolute;
+          top: 50%;
+          width: 30px;
+          height: 30px;
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          line-height: 30px;
+          font-size: 17px;
+          font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .arrow.left, .arrow.right {
+            width: 30px; 
+            height: 30px; 
+        }
+
+        .arrow.left {
+            left: 5%;
+        }
+
+        .arrow.right {
+            right: 5%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="#" onclick="location.href=location.href;">
+            <img src="images/logo.png" alt="Slidemaker">
+        </a>
+    </header>
+
+    <main>
+        <section>
+            <h2>Your Presentation Title</h2>
+        </section>
+
+        <div class="container">
+        </div>
+        <div class="arrow left">&#9665;</div>
+        <div class="arrow right">&#9655;</div>
+
+    </main>
+</body>
+</html>

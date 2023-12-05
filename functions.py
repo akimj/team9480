@@ -31,6 +31,7 @@ def addText(index):
         font=photofont, fill=(255,255,255))
     
     img.save(f'static/slides/slide{index}.png')
+    slidenames.append(f'slide{index}.png')
 
     return f'slide{index}.png'
 

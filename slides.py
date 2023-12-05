@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect,url_for
 from flask_bootstrap import Bootstrap5
 slidephoto = []
 slidetext = []
+slidenames = []
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/images'
