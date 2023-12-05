@@ -37,6 +37,9 @@ def addText(index):
     return f'slide{index}.png'
 
 
+# def addBorder():
+    
+
 # def addTheme(theme):
 #     return
 # def addMusic(song):
