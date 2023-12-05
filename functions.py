@@ -1,6 +1,8 @@
 from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
+from slides import slidetext
+from slides import slidephoto
 
 def addText(index):
 
