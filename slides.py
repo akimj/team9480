@@ -43,6 +43,7 @@ def upload_file():
 @app.route('/clear_images', methods=['POST'])
 def clear_images():
     slidephoto.clear()
+    slidetext.clear()
     folder = app.config['UPLOAD_FOLDER']
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
