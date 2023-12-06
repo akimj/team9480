@@ -2,6 +2,7 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
 def addText(index):
+    from slides import slidephoto, slidetext, slidenames
     img = Image.open(f'static/images/{slidephoto[index]}')
 
     lumi = [((a[0]*299 + a[1]*587 + a[2]*114 )//1000) for a in img.getdata()]
@@ -10,8 +11,9 @@ def addText(index):
     width, height = img.size
     captionx = width/10
     captiony = height - (height/6)
-
-    fontsize = width*1.5 / len(slidetext[index])
+    fontsize = 1
+    if(len(slidetext[index])!=0):
+        fontsize = width*1.5 / len(slidetext[index])
     
     if fontsize > 150:
         fontsize = 150
