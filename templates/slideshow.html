@@ -133,18 +133,23 @@
         </div>
         <div class="arrow left">
             <a href="{{ url_for('decrement_slide') }}">
+                <button>
                 &#9665;
-            </a>
+            </button>
+        </a>
         </div>
         <div class="arrow right">
             <a href="{{ url_for('increment_slide') }}">
+                <button>
                 &#9655;
+            </button>
             </a>
+        
         </div>  
 
         <div class="image-column">
             <div class="button-container">
-                <a href="{{ url_for('index') }}" class="back-button">Back to slide creation</a>
+                <a href="{{ url_for('index') }}" class="back-button">Back</a>
                 <form action="/clear_images" method="post">
                     <input type="submit" value="Clear Images" class="clear-button">
                 </form>
