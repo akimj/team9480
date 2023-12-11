@@ -3,45 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>SlideMaker</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@800&display=swap" rel="stylesheet">
+    <!-- Bootstrap Load -->
     {{ bootstrap.load_css() }}
     {{ bootstrap.load_js() }}
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border: 5px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            padding: 20px;
         }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        header img {
+            width: 200px; 
+            height: auto; 
+            cursor: pointer; 
+        }
+
+        main {
+            padding: 2em;
+            position: relative; 
+            
+        }
+
+        section {
+            text-align: center;
+        }
+
+        section h2 {
+            text-align: center; 
+        }
+
+        .container {
+            position: relative;
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            height: 300px;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            font-size: 17px;
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .arrow.left,
+        .arrow.right {
+            width: 30px; 
+            height: 30px; 
+        }
+
+        .arrow.left {
+            left: 5%;
+        }
+
+        .arrow.right {
+            right: 5%;
+        }
+
         h1 {
             margin-bottom: 20px;
         }
+
         .image-column {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         .image-column img {
             margin-bottom: 10px;
             max-width: 200px;
         }
+        .image-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.button-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button,
+.clear-button {
+    padding: 8px 16px;
+    margin: 0 10px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+}
+
+.image-wrapper {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.image-wrapper img {
+    max-width: 200px;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
     </style>
 </head>
 <body>
-    <h1>Slide Show</h1>
+    <!-- <header>
+        <a href="#" onclick="location.href=location.href;">
+            <img src="images/logo.png" alt="Slidemaker">
+        </a>
+    </header> -->
 
-  <a href="{{url_for('index')}}"><button>Back to slide creation</button></a>
+    <main>
+        <section>
+            <h1>Slide Show</h1>
+        </section>
 
-    <div class="image-column">
+        <div class="container">
+            <img src="{{ url_for('static', filename='slides/' + slidenames[slide_num]) }}" width="400"  class="img-fluid rounded" alt="{{ slidenames[slide_num] }}">
+        </div>
+        <div class="arrow left">
+            <a href="{{ url_for('decrement_slide') }}">
+                &#9665;
+            </a>
+        </div>
+        <div class="arrow right">
+            <a href="{{ url_for('increment_slide') }}">
+                &#9655;
+            </a>
+        </div>  
+
+        
+
+        <div class="image-column">
+            <div class="button-container">
+                <a href="{{ url_for('index') }}" class="back-button">Back to slide creation</a>
+                <form action="/clear_images" method="post">
+                    <input type="submit" value="Clear Images" class="clear-button">
+                </form>
+            </div>
             {% for filename in slidenames %}
-                <img src="{{ url_for('static', filename='slides/' + filename) }}" alt="{{ filename }}">
+                <div class="image-wrapper">
+                    <img src="{{ url_for('static', filename='slides/' + filename) }}" alt="{{ filename }}">
+                </div>
             {% endfor %}
         </div>
-    <form action="/clear_images" method="post">
-        <input type="submit" value="Clear Images">
-    </form>
+    </main>
 </body>
 </html>

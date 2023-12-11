@@ -21,19 +21,35 @@ def index():
     print(slidephoto) 
     print(slidetext)  # Console test
     return render_template('index.html', slidephoto=slidephoto)
-
+slide_num = 0
 @app.route('/slideshow')
 def slideshow():
     clear_images2()
     print("Vanilla Images:")  # Console test
-
     for i in range(len(slidephoto)):
         addText(i)
     print(slidephoto) 
     print(slidetext)   # Console test
     print(slidenames)
-    return render_template('slideshow.html', slidenames=slidenames)
+    
+    return render_template('slideshow.html', slidenames=slidenames, slide_num = slide_num)
 
+@app.route('/increment_slide')
+def increment_slide():
+    global slide_num
+    
+    if(slide_num != len(slidenames) - 1):
+        slide_num += 1
+    # You can perform additional checks or logic here based on your application's needs
+    return redirect('/slideshow')
+
+@app.route('/decrement_slide')
+def decrement_slide():
+    global slide_num
+    if(slide_num != 0):
+        slide_num -= 1
+    # You can perform additional checks or logic here based on your application's needs
+    return redirect('/slideshow')
     
 @app.route('/upload', methods=['POST'])
 def upload_file():
