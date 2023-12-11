@@ -40,7 +40,6 @@ def increment_slide():
     
     if(slide_num != len(slidenames) - 1):
         slide_num += 1
-    # You can perform additional checks or logic here based on your application's needs
     return redirect('/slideshow')
 
 @app.route('/decrement_slide')
@@ -48,7 +47,6 @@ def decrement_slide():
     global slide_num
     if(slide_num != 0):
         slide_num -= 1
-    # You can perform additional checks or logic here based on your application's needs
     return redirect('/slideshow')
     
 @app.route('/upload', methods=['POST'])
