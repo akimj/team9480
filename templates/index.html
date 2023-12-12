@@ -42,9 +42,15 @@
         h1, form, a {
             margin-bottom: 20px;
         }
+        .top-left {
+            position: absolute;
+            top: 10px; /* Adjust this value to set distance from the top */
+            left: 10px; /* Adjust this value to set distance from the left */
+        }
     </style>
 </head>
 <body>
+    <p class = "top-left">Preview:</p>
     <div class="content">
         <div class="image-list">
             {% for filename in slidephoto %}

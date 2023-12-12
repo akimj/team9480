@@ -35,7 +35,7 @@
 
         .container {
             position: relative;
-            width: 80%;
+            width: 280px;
             margin: 0 auto;
             padding: 20px;
             background-color: #f0f0f0;
@@ -129,7 +129,7 @@
         </section>
 
         <div class="container">
-            <img src="{{ url_for('static', filename='slides/' + slidenames[slide_num]) }}" width="400"  class="img-fluid rounded" alt="{{ slidenames[slide_num] }}">
+            <img src="{{ url_for('static', filename='slides/' + slidenames[slide_num]) }}" width="280"  class="img-fluid rounded" alt="{{ slidenames[slide_num] }}">
         </div>
         <div class="arrow left">
             <a href="{{ url_for('decrement_slide') }}">
