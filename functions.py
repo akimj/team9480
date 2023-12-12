@@ -5,8 +5,9 @@ def addText(index):
     from slides import slidephoto, slidetext, slidenames, textcolor
     img = Image.open(f'static/images/{slidephoto[index]}')
 
-    lumi = [((a[0]*299 + a[1]*587 + a[2]*114 )//1000) for a in img.getdata()]
-    average = sum(lumi) / len(lumi)
+    # lumi = [((a[0]*299 + a[1]*587 + a[2]*114 )//1000) for a in img.getdata()]
+    # average = sum(lumi) / len(lumi)
+    # No longer needed since user selects color for each image
 
     width, height = img.size
     captionx = width/10
@@ -25,13 +26,28 @@ def addText(index):
 
     draw = ImageDraw.Draw(img)
 
-    if average >= 200:
+    if textcolor[index] == 'white':
         draw.text((captionx, captiony), f'{slidetext[index]}',
         font=photofont, fill=(0,0,0))
-    else:
+    elif textcolor[index] == 'black':
         draw.text((captionx, captiony), f'{slidetext[index]}', 
         font=photofont, fill=(255,255,255))
-    
+    elif textcolor[index] == 'blue':
+        draw.text((captionx, captiony), f'{slidetext[index]}', 
+        font=photofont, fill=(0,0,255))
+    elif textcolor[index] == 'red':
+        draw.text((captionx, captiony), f'{slidetext[index]}', 
+        font=photofont, fill=(255,0,0))
+    elif textcolor[index] == 'green':
+        draw.text((captionx, captiony), f'{slidetext[index]}', 
+        font=photofont, fill=(0,255,0))
+    elif textcolor[index] == 'purple':
+        draw.text((captionx, captiony), f'{slidetext[index]}', 
+        font=photofont, fill=(128,0,128))
+    elif textcolor[index] == 'yellow':
+        draw.text((captionx, captiony), f'{slidetext[index]}', 
+        font=photofont, fill=(255,255,0))  
+
     img.save(f'static/slides/slide{index}.png')
     slidenames.append(f'slide{index}.png')
 
