@@ -23,7 +23,7 @@ def index():
     print("Vanilla Images:")  # Console test
     print(slidephoto) 
     print(slidetext)  # Console test
-    return render_template('index.html', slidephoto=slidephoto)
+    return render_template('index.html', slidephoto=slidephoto, slidetext = slidetext)
 slide_num = 0
 @app.route('/noslides')
 def noslides(): 
@@ -74,6 +74,7 @@ def upload_file():
             textcolor.append(color)
             print(slidephoto) 
             print(slidetext)
+            print(textcolor)
             return redirect(url_for('index'))  
     return redirect(url_for('index'))
 @app.route('/clear_images', methods=['POST'])

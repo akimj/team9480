@@ -127,7 +127,7 @@
         <section>
             <h1>Slide Show</h1>
         </section>
-
+        <p>{{slide_num + 1}}</p>    
         <div class="container">
             <img src="{{ url_for('static', filename='slides/' + slidenames[slide_num]) }}" width="280"  class="img-fluid rounded" alt="{{ slidenames[slide_num] }}">
         </div>

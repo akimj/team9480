@@ -15,7 +15,6 @@ def addText(index):
     fontsize = 1
     if(len(slidetext[index])!=0):
         fontsize = width*1.5 / len(slidetext[index])
-    
     if fontsize > 150:
         fontsize = 150
     else:

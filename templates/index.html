@@ -55,6 +55,7 @@
         <div class="image-list">
             {% for filename in slidephoto %}
                 <img src="{{ url_for('static', filename='images/' + filename) }}" alt="{{ filename }}">
+                <p>{{slidetext[slidephoto.index(filename)]}}</p>
             {% endfor %}
         </div>
         <!-- <div class="image-list">
