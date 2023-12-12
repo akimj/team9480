@@ -26,10 +26,10 @@ def addText(index):
 
     draw = ImageDraw.Draw(img)
 
-    if textcolor[index] == 'white':
+    if textcolor[index] == 'black':
         draw.text((captionx, captiony), f'{slidetext[index]}',
         font=photofont, fill=(0,0,0))
-    elif textcolor[index] == 'black':
+    elif textcolor[index] == 'white':
         draw.text((captionx, captiony), f'{slidetext[index]}', 
         font=photofont, fill=(255,255,255))
     elif textcolor[index] == 'blue':

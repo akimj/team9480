@@ -17,12 +17,17 @@ bootstrap = Bootstrap5(app)
 
 @app.route('/')
 def index(): 
+    global slide_num
+    slide_num = 0
     clear_images2()
     print("Vanilla Images:")  # Console test
     print(slidephoto) 
     print(slidetext)  # Console test
     return render_template('index.html', slidephoto=slidephoto)
 slide_num = 0
+@app.route('/noslides')
+def noslides(): 
+    return render_template('noslides.html') 
 @app.route('/slideshow')
 def slideshow():
     clear_images2()
@@ -33,9 +38,10 @@ def slideshow():
     print(slidetext)   # Console test
     print(slidenames)
     print(textcolor)
-    
-    return render_template('slideshow.html', slidenames=slidenames, slide_num = slide_num)
-
+    if not slidephoto:
+        return redirect('/noslides')
+    else:
+        return render_template('slideshow.html', slidenames=slidenames, slide_num = slide_num)
 @app.route('/increment_slide')
 def increment_slide():
     global slide_num
@@ -50,9 +56,11 @@ def decrement_slide():
     if(slide_num != 0):
         slide_num -= 1
     return redirect('/slideshow')
-    
+   
 @app.route('/upload', methods=['POST'])
 def upload_file():
+    global slide_num
+    slide_num = 0
     clear_images2()
     if request.method == 'POST':
         uploaded_file = request.files['fileToUpload']
