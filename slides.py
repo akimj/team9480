@@ -5,6 +5,7 @@ from functions import addText
 slidephoto = []
 slidetext = []
 slidenames = []
+textcolor = []
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'static/images'
@@ -31,6 +32,7 @@ def slideshow():
     print(slidephoto) 
     print(slidetext)   # Console test
     print(slidenames)
+    print(textcolor)
     
     return render_template('slideshow.html', slidenames=slidenames, slide_num = slide_num)
 
@@ -60,6 +62,8 @@ def upload_file():
             slidephoto.append(filename)  
             text = request.form.get('lname')
             slidetext.append(text) 
+            color = request.form.get('text-color')
+            textcolor.append(color)
             print(slidephoto) 
             print(slidetext)
             return redirect(url_for('index'))  

@@ -2,7 +2,7 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw 
 def addText(index):
-    from slides import slidephoto, slidetext, slidenames
+    from slides import slidephoto, slidetext, slidenames, textcolor
     img = Image.open(f'static/images/{slidephoto[index]}')
 
     lumi = [((a[0]*299 + a[1]*587 + a[2]*114 )//1000) for a in img.getdata()]

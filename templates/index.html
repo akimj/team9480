@@ -62,8 +62,16 @@
             <img src="/static/starter_image/starter (1).jpg" alt="{{ filename }}">
          
             <form action="/upload" method="post" enctype="multipart/form-data">
-                <label for="lname">Enter Text:</label>
+                <label for="lname">Enter Caption:</label>
                 <input type="text" id="lname" name="lname"><br><br>
+                <label for="text-color">Text Color:</label>
+                <select id="text-color" name="text-color">
+                    <option value="black">Black</option>
+                    <option value="white">White</option>
+                    <option value="blue">Blue</option>
+                    <option value="red">Red</option>
+                    <option value="purple">Purple</option>
+                </select><br><br>
                 <input type="file" name="fileToUpload" id="fileToUpload">
                 <input type="submit" value="Submit Image" name="submit">
             </form>
