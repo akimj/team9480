@@ -54,9 +54,3 @@ def addText(index):
 
 
 # def addBorder():
-    
-
-# def addTheme(theme):
-#     return
-# def addMusic(song):
-#     return
