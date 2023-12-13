@@ -16,7 +16,8 @@ app.config['U'] = 'static/slides'
 bootstrap = Bootstrap5(app)
 
 @app.route('/')
-def index(): 
+def index():
+
     global slide_num
     slide_num = 0
     clear_images2()
@@ -82,6 +83,7 @@ def clear_images():
     slidephoto.clear()
     slidetext.clear()
     slidenames.clear()
+    textcolor.clear()
     folder = app.config['UPLOAD_FOLDER']
     for filename in os.listdir(folder):
         file_path = os.path.join(folder, filename)
