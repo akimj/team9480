@@ -2,6 +2,16 @@ import os
 from flask import Flask, render_template, request, redirect,url_for
 from flask_bootstrap import Bootstrap5
 from functions import addText
+#
+# CST 205
+# SlideMaker
+# This program makes a slideshow.
+# Aiden Kim, Jake Martin, Kylie Cota, Matthijs De Vries
+# 12/13/2023
+#
+
+
+
 slidephoto = []
 slidetext = []
 slidenames = []
